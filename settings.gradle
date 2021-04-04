@@ -1,0 +1,3 @@
+include ':NewsApiClient-Kotlin'
+include ':app'
+rootProject.name = "NewsApi Kotlin"
