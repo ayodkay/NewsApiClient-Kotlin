@@ -1,8 +1,8 @@
 package com.example.newsapikotlin
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.github.ayodkay.NewsApiClient
 import com.github.ayodkay.`interface`.ArticlesResponseCallback
 import com.github.ayodkay.`interface`.SourcesCallback
@@ -20,6 +20,13 @@ class MainActivity : AppCompatActivity() {
 
         val newsApiClient = NewsApiClient("YOUR_API_KEY")
 
+//        val newsApiClient = NewsApiClient("YOUR_API_KEY",
+//            NetworkInterceptorModel(), OfflineCacheInterceptorModel())
+
+//        val newsApiClient = NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel())
+
+//        val newsApiClient = NewsApiClient("YOUR_API_KEY", OfflineCacheInterceptorModel())
+
         //everything https://newsapi.org/docs/endpoints/everything
         val everythingBuilder = EverythingBuilder.Builder()
             .q("bitcoin")
@@ -32,6 +39,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d(TAG, "onSuccess articles: ${response.articles}")
                     Log.d(TAG, "onSuccess status: ${response.status}")
                     Log.d(TAG, "onSuccess totalResults: ${response.totalResults}")
+                    Log.d(TAG, "-------------------------------------------------")
                 }
 
                 override fun onFailure(throwable: Throwable) {
@@ -54,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d(TAG, "onSuccess articles: ${response.articles}")
                     Log.d(TAG, "onSuccess status: ${response.status}")
                     Log.d(TAG, "onSuccess totalResults: ${response.totalResults}")
+                    Log.d(TAG, "-------------------------------------------------")
                 }
 
                 override fun onFailure(throwable: Throwable) {
@@ -76,6 +85,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onSuccess(response: SourcesResponse) {
                     Log.d(TAG, "onSuccess articles: ${response.sources}")
                     Log.d(TAG, "onSuccess status: ${response.status}")
+                    Log.d(TAG, "-------------------------------------------------")
                 }
 
                 override fun onFailure(throwable: Throwable) {

@@ -6,28 +6,67 @@ import com.github.ayodkay.builder.EverythingBuilder
 import com.github.ayodkay.builder.SourcesBuilder
 import com.github.ayodkay.builder.TopHeadlinesBuilder
 import com.github.ayodkay.models.ArticleResponse
+import com.github.ayodkay.models.NetworkInterceptorModel
+import com.github.ayodkay.models.OfflineCacheInterceptorModel
 import com.github.ayodkay.models.SourcesResponse
 import com.github.ayodkay.network.APIClient
 import com.github.ayodkay.network.APIService
 import org.json.JSONException
 import org.json.JSONObject
-import java.io.IOException
-import java.net.HttpURLConnection
-
 import retrofit2.Call
-
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.collections.HashMap
+import java.io.IOException
+import java.net.HttpURLConnection
 
 /**
  * Created by kayode issac ayodele on 03/04/2020.
  */
 
 
-class NewsApiClient(private val mApiKey: String) {
+class NewsApiClient {
     private var query: MutableMap<String, String>
-    private val mAPIService: APIService = APIClient.aPIService
+    private var mAPIService: APIService
+    private var mApiKey: String
+
+    constructor(mApiKey: String) {
+        this.query = HashMap()
+        this.query["apiKey"] = mApiKey
+        this.mApiKey = mApiKey
+        this.mAPIService = APIClient.aPIService()
+    }
+
+    constructor(
+        mApiKey: String,
+        networkInterceptorModel: NetworkInterceptorModel,
+        offlineCacheInterceptorModel: OfflineCacheInterceptorModel
+    ) {
+        this.query = HashMap()
+        this.query["apiKey"] = mApiKey
+        this.mApiKey = mApiKey
+        this.mAPIService = APIClient
+            .aPIService(networkInterceptorModel, offlineCacheInterceptorModel)
+    }
+
+    constructor(
+        mApiKey: String,
+        networkInterceptorModel: NetworkInterceptorModel,
+    ) {
+        this.query = HashMap()
+        this.query["apiKey"] = mApiKey
+        this.mApiKey = mApiKey
+        this.mAPIService = APIClient.aPIService(networkInterceptorModel)
+    }
+
+    constructor(
+        mApiKey: String,
+        offlineCacheInterceptorModel: OfflineCacheInterceptorModel
+    ) {
+        this.query = HashMap()
+        this.query["apiKey"] = mApiKey
+        this.mApiKey = mApiKey
+        this.mAPIService = APIClient.aPIService(offlineCacheInterceptorModel)
+    }
 
     private fun errorMessage(str: String): Throwable {
         var throwable: Throwable? = null
@@ -150,8 +189,5 @@ class NewsApiClient(private val mApiKey: String) {
             })
     }
 
-    init {
-        query = HashMap()
-        query["apiKey"] = mApiKey
-    }
+
 }
