@@ -18,7 +18,7 @@ allprojects {
 #### Step 2 : Download via ```Gradle```:
 
 ```kotlin
-implementation 'com.github.ayodkay:NewsApiClient-Kotlin:1.0.0'
+implementation 'com.github.ayodkay:NewsApiClient-Kotlin:1.0.1'
 ```
 
 
