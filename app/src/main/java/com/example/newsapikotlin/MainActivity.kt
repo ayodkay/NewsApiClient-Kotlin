@@ -3,12 +3,12 @@ package com.example.newsapikotlin
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.github.ayodkay.NewsApiClient
-import com.github.ayodkay.`interface`.ArticlesResponseCallback
-import com.github.ayodkay.`interface`.SourcesCallback
 import com.github.ayodkay.builder.EverythingBuilder
 import com.github.ayodkay.builder.SourcesBuilder
 import com.github.ayodkay.builder.TopHeadlinesBuilder
+import com.github.ayodkay.client.NewsApiClient
+import com.github.ayodkay.interfaces.ArticlesResponseCallback
+import com.github.ayodkay.interfaces.SourcesCallback
 import com.github.ayodkay.models.ArticleResponse
 import com.github.ayodkay.models.SourcesResponse
 
@@ -52,7 +52,6 @@ class MainActivity : AppCompatActivity() {
         //top-headlines https://newsapi.org/docs/endpoints/top-headlines
         val topHeadlinesBuilder = TopHeadlinesBuilder.Builder()
             .q("bitcoin")
-            .language("en")
             .build()
 
         newsApiClient.getTopHeadlines(
