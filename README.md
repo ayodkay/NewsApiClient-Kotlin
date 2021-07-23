@@ -18,7 +18,7 @@ allprojects {
 #### Step 2 : Download via ```Gradle```:
 
 ```kotlin
-implementation 'com.github.ayodkay:NewsApiClient-Kotlin:1.0.0'
+implementation 'com.github.ayodkay:NewsApiClient-Kotlin:1.0.1'
 ```
 
 
@@ -30,6 +30,27 @@ implementation 'com.github.ayodkay:NewsApiClient-Kotlin:1.0.0'
 val newsApiClient = NewsApiClient("YOUR_API_KEY")
 ```
 
+``` java 
+val newsApiClient = NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel(), OfflineCacheInterceptorModel())
+```
+
+``` java 
+val newsApiClient = NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel())
+```
+
+``` java 
+val newsApiClient = NewsApiClient("YOUR_API_KEY", OfflineCacheInterceptorModel())
+```
+
+**```NetworkInterceptorModel()``` and ```OfflineCacheInterceptorModel()``` helps cache result for a specific amount of hours, minutes or even days. By default it is 1 hour and to change**
+
+``` java 
+val newsApiClient = NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel(1,TimeUnit.MINUTES))
+```
+
+``` java 
+val newsApiClient = NewsApiClient("YOUR_API_KEY", OfflineCacheInterceptorModel(1,TimeUnit.DAYS))
+```
 
 #### Get Top EveryThing [doc](https://newsapi.org/docs/endpoints/everything)
 ```kotlin
