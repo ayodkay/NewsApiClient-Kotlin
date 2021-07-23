@@ -1,7 +1,7 @@
-package com.github.ayodkay.models
+package com.github.ayodkay.interfaces
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import com.github.ayodkay.models.SourcesResponse
+
 
 /**
  * Created by Kayode Ayodele
@@ -16,12 +16,7 @@ import com.google.gson.annotations.SerializedName
  * LinkedIn : linkedin.com/in/kayode-ayodele/
  */
 
-data class SourcesResponse (
-    @SerializedName("status")
-    @Expose
-    var status: String,
-
-    @SerializedName("sources")
-    @Expose
-    var sources: List<Source>
-)
+interface SourcesCallback {
+    fun onSuccess(response: SourcesResponse)
+    fun onFailure(throwable: Throwable)
+}

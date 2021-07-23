@@ -1,7 +1,7 @@
-package com.github.ayodkay.models
+package com.github.ayodkay.mvvm.interfaces
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import androidx.lifecycle.MutableLiveData
+import com.github.ayodkay.models.ArticleResponse
 
 /**
  * Created by Kayode Ayodele
@@ -16,12 +16,7 @@ import com.google.gson.annotations.SerializedName
  * LinkedIn : linkedin.com/in/kayode-ayodele/
  */
 
-data class SourcesResponse (
-    @SerializedName("status")
-    @Expose
-    var status: String,
-
-    @SerializedName("sources")
-    @Expose
-    var sources: List<Source>
-)
+interface ArticlesLiveDataResponseCallback {
+    fun onSuccess(response: MutableLiveData<ArticleResponse>)
+    fun onFailure(throwable: Throwable)
+}

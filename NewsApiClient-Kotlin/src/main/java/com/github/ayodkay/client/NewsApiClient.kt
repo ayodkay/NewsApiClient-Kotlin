@@ -1,10 +1,10 @@
-package com.github.ayodkay
+package com.github.ayodkay.client
 
-import com.github.ayodkay.`interface`.ArticlesResponseCallback
-import com.github.ayodkay.`interface`.SourcesCallback
 import com.github.ayodkay.builder.EverythingBuilder
 import com.github.ayodkay.builder.SourcesBuilder
 import com.github.ayodkay.builder.TopHeadlinesBuilder
+import com.github.ayodkay.interfaces.ArticlesResponseCallback
+import com.github.ayodkay.interfaces.SourcesCallback
 import com.github.ayodkay.models.ArticleResponse
 import com.github.ayodkay.models.NetworkInterceptorModel
 import com.github.ayodkay.models.OfflineCacheInterceptorModel
@@ -20,9 +20,17 @@ import java.io.IOException
 import java.net.HttpURLConnection
 
 /**
- * Created by kayode issac ayodele on 03/04/2020.
+ * Created by Kayode Ayodele
+ * =========================================
+ * NewsApiClient-Kotlin
+ * Copyright (C) 23/07/2020.
+ * All rights reserved
+ * -----------------------------------------
+ * Name     : Kayode Issac Ayodele
+ * E-mail   : kayode@oamaru.com.br
+ * Github   : github.com/ayodkay
+ * LinkedIn : linkedin.com/in/kayode-ayodele/
  */
-
 
 class NewsApiClient {
     private var query: MutableMap<String, String>
@@ -118,11 +126,11 @@ class NewsApiClient {
             })
     }
 
-    fun getTopHeadlines(topHeadlinesBuilder: TopHeadlinesBuilder, callback: ArticlesResponseCallback
+    fun getTopHeadlines(
+        topHeadlinesBuilder: TopHeadlinesBuilder, callback: ArticlesResponseCallback
     ) {
         query = createQuery()
         query["country"] = topHeadlinesBuilder.country
-        query["language"] = topHeadlinesBuilder.language
         query["category"] = topHeadlinesBuilder.category
         query["sources"] = topHeadlinesBuilder.sources
         query["q"] = topHeadlinesBuilder.q
@@ -156,8 +164,10 @@ class NewsApiClient {
     fun getEverything(everythingBuilder: EverythingBuilder, callback: ArticlesResponseCallback) {
         query = createQuery()
         query["q"] = everythingBuilder.q
+        query["qInTitle"] = everythingBuilder.qInTitle
         query["sources"] = everythingBuilder.sources
         query["domains"] = everythingBuilder.domains
+        query["excludeDomains"] = everythingBuilder.excludeDomains
         query["from"] = everythingBuilder.from
         query["to"] = everythingBuilder.to
         query["language"] = everythingBuilder.language

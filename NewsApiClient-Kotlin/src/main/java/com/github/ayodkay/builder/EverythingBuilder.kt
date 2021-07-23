@@ -1,7 +1,16 @@
 package com.github.ayodkay.builder
 
 /**
- * Created by kayode issac ayodele on 03/04/2020.
+ * Created by Kayode Ayodele
+ * =========================================
+ * NewsApiClient-Kotlin
+ * Copyright (C) 23/07/2020.
+ * All rights reserved
+ * -----------------------------------------
+ * Name     : Kayode Issac Ayodele
+ * E-mail   : kayode@oamaru.com.br
+ * Github   : github.com/ayodkay
+ * LinkedIn : linkedin.com/in/kayode-ayodele/
  */
 
 
@@ -46,11 +55,18 @@ class EverythingBuilder internal constructor(
         fun page(page: String) = apply { this.page = page }
 
         fun build() =
-            EverythingBuilder(q, sources, domains, from, to, language, sortBy, pageSize, page)
+            EverythingBuilder(
+                q,
+                qInTitle,
+                sources,
+                domains,
+                excludeDomains,
+                from,
+                to,
+                language,
+                sortBy,
+                pageSize,
+                page
+            )
     }
-
-    override fun toString(): String {
-        return super.toString()
-    }
-
 }

@@ -1,7 +1,16 @@
 package com.github.ayodkay.builder
 
 /**
- * Created by kayode issac ayodele on 03/04/2020.
+ * Created by Kayode Ayodele
+ * =========================================
+ * NewsApiClient-Kotlin
+ * Copyright (C) 23/07/2020.
+ * All rights reserved
+ * -----------------------------------------
+ * Name     : Kayode Issac Ayodele
+ * E-mail   : kayode@oamaru.com.br
+ * Github   : github.com/ayodkay
+ * LinkedIn : linkedin.com/in/kayode-ayodele/
  */
 
 
@@ -32,9 +41,4 @@ internal constructor(
 
         fun build() = TopHeadlinesBuilder(q, sources, category, country, pageSize, page)
     }
-
-    override fun toString(): String {
-        return super.toString()
-    }
-
 }
