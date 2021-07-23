@@ -185,7 +185,6 @@ newsApiClient.getEverything(
 ```kotlin
 val topHeadlinesBuilder = TopHeadlinesBuilder.Builder()
             .q("bitcoin")
-            .language("en")
             .build()
 
 newsApiClient.getTopHeadlines(
