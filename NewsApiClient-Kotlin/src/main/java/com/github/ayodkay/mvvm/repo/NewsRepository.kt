@@ -32,7 +32,7 @@ import java.net.HttpURLConnection
 
 class NewsRepository {
 
-    private lateinit var query: MutableMap<String, String>
+    private lateinit var query: MutableMap<String, Any>
     private fun errorMessage(str: String): Throwable {
         var throwable: Throwable? = null
         try {

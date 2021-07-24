@@ -44,5 +44,9 @@ data class Article(
 
     @SerializedName("publishedAt")
     @Expose
-    var publishedAt: String
+    var publishedAt: String,
+
+    @SerializedName("content")
+    @Expose
+    var content: String
 )

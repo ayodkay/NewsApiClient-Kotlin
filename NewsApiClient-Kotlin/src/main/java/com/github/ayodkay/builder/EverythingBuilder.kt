@@ -24,10 +24,10 @@ class EverythingBuilder internal constructor(
     val to: String = "",
     val language: String = "",
     val sortBy: String = "",
-    val pageSize: String = "",
-    val page: String = "",
+    val pageSize: Int = 1,
+    val page: Int = 1
 
-    ) {
+) {
 
     data class Builder(
         private var q: String = "",
@@ -39,8 +39,8 @@ class EverythingBuilder internal constructor(
         private var to: String = "",
         private var language: String = "",
         private var sortBy: String = "",
-        private var pageSize: String = "",
-        private var page: String = ""
+        private var pageSize: Int = 1,
+        private var page: Int = 1
     ) {
         fun q(q: String) = apply { this.q = q }
         fun qInTitle(qInTitle: String) = apply { this.qInTitle = qInTitle }
@@ -51,8 +51,8 @@ class EverythingBuilder internal constructor(
         fun to(to: String) = apply { this.to = to }
         fun language(language: String) = apply { this.language = language }
         fun sortBy(sortBy: String) = apply { this.sortBy = sortBy }
-        fun pageSize(pageSize: String) = apply { this.pageSize = pageSize }
-        fun page(page: String) = apply { this.page = page }
+        fun pageSize(pageSize: Int) = apply { this.pageSize = pageSize }
+        fun page(page: Int) = apply { this.page = page }
 
         fun build() =
             EverythingBuilder(

@@ -20,8 +20,8 @@ internal constructor(
     val sources: String = "",
     val category: String = "",
     val country: String = "",
-    val pageSize: String = "",
-    val page: String = ""
+    val pageSize: Int = 1,
+    val page: Int = 1
 ) {
 
     data class Builder(
@@ -29,15 +29,15 @@ internal constructor(
         private var sources: String = "",
         private var category: String = "",
         private var country: String = "",
-        private var pageSize: String = "",
-        private var page: String = ""
+        private var pageSize: Int = 1,
+        private var page: Int = 1
     ) {
         fun q(q: String) = apply { this.q = q }
         fun sources(sources: String) = apply { this.sources = sources }
         fun category(category: String = "") = apply { this.category = category }
         fun country(country: String = "") = apply { this.country = country }
-        fun pageSize(pageSize: String = "") = apply { this.pageSize = pageSize }
-        fun page(page: String = "") = apply { this.page = page }
+        fun pageSize(pageSize: Int = 1) = apply { this.pageSize = pageSize }
+        fun page(page: Int = 1) = apply { this.page = page }
 
         fun build() = TopHeadlinesBuilder(q, sources, category, country, pageSize, page)
     }

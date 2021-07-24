@@ -25,15 +25,15 @@ interface APIService {
     @CacheAble
     @Headers("Cacheable: true")
     @GET("/v2/sources")
-    fun getSources(@QueryMap query: MutableMap<String, String>): Call<SourcesResponse>
+    fun getSources(@QueryMap query: MutableMap<String, Any>): Call<SourcesResponse>
 
     @CacheAble
     @Headers("Cacheable: true")
     @GET("/v2/top-headlines")
-    fun getTopHeadlines(@QueryMap query: MutableMap<String, String>): Call<ArticleResponse>
+    fun getTopHeadlines(@QueryMap query: MutableMap<String, Any>): Call<ArticleResponse>
 
     @CacheAble
     @Headers("Cacheable: true")
     @GET("/v2/everything")
-    fun getEverything(@QueryMap query: MutableMap<String, String>): Call<ArticleResponse>
+    fun getEverything(@QueryMap query: MutableMap<String, Any>): Call<ArticleResponse>
 }

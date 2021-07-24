@@ -33,7 +33,7 @@ import java.net.HttpURLConnection
  */
 
 class NewsApiClient {
-    private var query: MutableMap<String, String>
+    private var query: MutableMap<String, Any>
     private var mAPIService: APIService
     private var mApiKey: String
 
@@ -90,7 +90,7 @@ class NewsApiClient {
         return throwable
     }
 
-    private fun createQuery(): MutableMap<String, String> {
+    private fun createQuery(): MutableMap<String, Any> {
         query = HashMap()
         query["apiKey"] = mApiKey
         return query
