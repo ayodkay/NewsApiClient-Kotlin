@@ -3,9 +3,9 @@ package com.github.ayodkay.interceptor
 import android.content.Context
 import android.net.ConnectivityManager
 import com.github.ayodkay.anotation.CacheAble
-import com.github.ayodkay.app.App.Companion.context
 import com.github.ayodkay.constants.Constant.Companion.HEADER_CACHE_CONTROL
 import com.github.ayodkay.constants.Constant.Companion.HEADER_PRAGMA
+import com.github.ayodkay.init.NewsApi.context
 import okhttp3.CacheControl
 import okhttp3.Interceptor
 import okhttp3.Response

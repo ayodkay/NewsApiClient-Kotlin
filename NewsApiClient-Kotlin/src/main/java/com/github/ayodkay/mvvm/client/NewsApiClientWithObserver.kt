@@ -1,11 +1,12 @@
 package com.github.ayodkay.mvvm.client
 
 
+import androidx.activity.ComponentActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
 import com.github.ayodkay.builder.EverythingBuilder
 import com.github.ayodkay.builder.SourcesBuilder
 import com.github.ayodkay.builder.TopHeadlinesBuilder
+import com.github.ayodkay.init.NewsApi
 import com.github.ayodkay.models.NetworkInterceptorModel
 import com.github.ayodkay.models.OfflineCacheInterceptorModel
 import com.github.ayodkay.mvvm.interfaces.ArticlesLiveDataResponseCallback
@@ -31,40 +32,35 @@ class NewsApiClientWithObserver {
 
     private var mAPIService: APIService
     private var mApiKey: String
-    private var owner: ViewModelStoreOwner
 
-    constructor(mApiKey: String, owner: ViewModelStoreOwner) {
+    constructor(mApiKey: String) {
         this.mApiKey = mApiKey
-        this.owner = owner
         this.mAPIService = APIClient.aPIService()
     }
 
     constructor(
-        mApiKey: String, owner: ViewModelStoreOwner,
+        mApiKey: String,
         networkInterceptorModel: NetworkInterceptorModel,
         offlineCacheInterceptorModel: OfflineCacheInterceptorModel
     ) {
         this.mApiKey = mApiKey
-        this.owner = owner
         this.mAPIService = APIClient
             .aPIService(networkInterceptorModel, offlineCacheInterceptorModel)
     }
 
     constructor(
-        mApiKey: String, owner: ViewModelStoreOwner,
+        mApiKey: String, owner: ComponentActivity,
         networkInterceptorModel: NetworkInterceptorModel,
     ) {
         this.mApiKey = mApiKey
-        this.owner = owner
         this.mAPIService = APIClient.aPIService(networkInterceptorModel)
     }
 
     constructor (
-        mApiKey: String, owner: ViewModelStoreOwner,
+        mApiKey: String, owner: ComponentActivity,
         offlineCacheInterceptorModel: OfflineCacheInterceptorModel
     ) {
         this.mApiKey = mApiKey
-        this.owner = owner
         this.mAPIService = APIClient.aPIService(offlineCacheInterceptorModel)
     }
 
@@ -73,7 +69,7 @@ class NewsApiClientWithObserver {
         sourcesBuilder: SourcesBuilder,
         callback: SourcesLiveDataCallback
     ) {
-        val newViewModel = ViewModelProvider(owner).get(NewViewModel::class.java)
+        val newViewModel = ViewModelProvider(NewsApi.context).get(NewViewModel::class.java)
         newViewModel.getSourcesFromRepo(mApiKey, sourcesBuilder, mAPIService, callback)
     }
 
@@ -82,7 +78,7 @@ class NewsApiClientWithObserver {
         topHeadlinesBuilder: TopHeadlinesBuilder,
         callback: ArticlesLiveDataResponseCallback
     ) {
-        val newViewModel = ViewModelProvider(owner).get(NewViewModel::class.java)
+        val newViewModel = ViewModelProvider(NewsApi.context).get(NewViewModel::class.java)
         newViewModel.getHeadlineFromRepo(mApiKey, topHeadlinesBuilder, mAPIService, callback)
     }
 
@@ -91,7 +87,7 @@ class NewsApiClientWithObserver {
         everythingBuilder: EverythingBuilder,
         callback: ArticlesLiveDataResponseCallback
     ) {
-        val newViewModel = ViewModelProvider(owner).get(NewViewModel::class.java)
+        val newViewModel = ViewModelProvider(NewsApi.context).get(NewViewModel::class.java)
         newViewModel.getEveryThingFromRepo(mApiKey, everythingBuilder, mAPIService, callback)
     }
 }

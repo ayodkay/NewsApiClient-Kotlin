@@ -18,7 +18,7 @@ allprojects {
 #### Step 2 : Download via ```Gradle```:
 
 ```kotlin
-implementation 'com.github.ayodkay:NewsApiClient-Kotlin:1.0.2'
+implementation 'com.github.ayodkay:NewsApiClient-Kotlin:1.0.4'
 ```
 
 
@@ -27,29 +27,29 @@ implementation 'com.github.ayodkay:NewsApiClient-Kotlin:1.0.2'
 #### Instantiate the Client class:
 
 ``` java 
-val newsApiClientWithObserver = NewsApiClientWithObserver("YOUR_API_KEY")
+val newsApiClientWithObserver = NewsApi.init(this, NewsApiClientWithObserver("YOUR_API_KEY"))
 ```
 
 ``` java 
-val newsApiClientWithObserver = NewsApiClientWithObserver("YOUR_API_KEY", NetworkInterceptorModel(), OfflineCacheInterceptorModel())
+val newsApiClientWithObserver = NewsApi.init(NewsApiClientWithObserver("YOUR_API_KEY", NetworkInterceptorModel(), OfflineCacheInterceptorModel()))
 ```
 
 ``` java 
-val newsApiClientWithObserver = NewsApiClientWithObserver("YOUR_API_KEY", NetworkInterceptorModel())
+val newsApiClientWithObserver = NewsApi.init(NewsApiClientWithObserver("YOUR_API_KEY", NetworkInterceptorModel()))
 ```
 
 ``` java 
-val newsApiClientWithObserver = NewsApiClientWithObserver("YOUR_API_KEY", OfflineCacheInterceptorModel())
+val newsApiClientWithObserver = NewsApi.init(NewsApiClientWithObserver("YOUR_API_KEY", OfflineCacheInterceptorModel()))
 ```
 
 **```NetworkInterceptorModel()``` and ```OfflineCacheInterceptorModel()``` helps cache result for a specific amount of hours, minutes or even days. By default it is 1 hour and to change**
 
 ``` java 
-val newsApiClientWithObserver = NewsApiClientWithObserver("YOUR_API_KEY", NetworkInterceptorModel(1,TimeUnit.MINUTES))
+val newsApiClientWithObserver = NewsApi.init(NewsApiClientWithObserver("YOUR_API_KEY", NetworkInterceptorModel(1,TimeUnit.MINUTES)))
 ```
 
 ``` java 
-val newsApiClientWithObserver = NewsApiClientWithObserver("YOUR_API_KEY", OfflineCacheInterceptorModel(1,TimeUnit.DAYS))
+val newsApiClientWithObserver = NewsApi.init(NewsApiClientWithObserver("YOUR_API_KEY", OfflineCacheInterceptorModel(1,TimeUnit.DAYS)))
 ```
 
 #### Get Top EveryThing [doc](https://newsapi.org/docs/endpoints/everything)
@@ -60,12 +60,12 @@ val everythingBuilder = EverythingBuilder.Builder()
 newsApiClientWithObserver
     .getEverything(everythingBuilder, object : ArticlesLiveDataResponseCallback {
         override fun onSuccess(response: MutableLiveData<ArticleResponse>) {
-            response.observe(this@MainActivity2, {
+            response.observe(this@MainActivity2 ){
                 Log.d(TAG, "onSuccess articles: ${it.articles}")
                 Log.d(TAG, "onSuccess status: ${it.status}")
                 Log.d(TAG, "onSuccess totalResults: ${it.totalResults}")
                 Log.d(TAG, "-------------------------------------------------")
-            })
+            }
         }
 
         override fun onFailure(throwable: Throwable) {
@@ -87,12 +87,12 @@ val topHeadlinesBuilder = TopHeadlinesBuilder.Builder()
 newsApiClientWithObserver
     .getTopHeadlines(topHeadlinesBuilder, object : ArticlesLiveDataResponseCallback {
         override fun onSuccess(response: MutableLiveData<ArticleResponse>) {
-            response.observe(this@MainActivity2, {
+            response.observe(this@MainActivity2 ){
                 Log.d(TAG, "onSuccess articles topHeadlinesBuilder: ${it.articles}")
                 Log.d(TAG, "onSuccess status topHeadlinesBuilder: ${it.status}")
                 Log.d(TAG, "onSuccess totalResults topHeadlinesBuilder: ${it.totalResults}")
                 Log.d(TAG, "-------------------------------------------------")
-            })
+            }
         }
 
         override fun onFailure(throwable: Throwable) {
@@ -112,11 +112,11 @@ val sourcesBuilder = SourcesBuilder.Builder()
 newsApiClientWithObserver
     .getSources(sourcesBuilder, object : SourcesLiveDataCallback {
         override fun onSuccess(response: MutableLiveData<SourcesResponse>) {
-            response.observe(this@MainActivity2, {
+            response.observe(this@MainActivity2 ){
                 Log.d(TAG, "onSuccess status getSources: ${it.status}")
                 Log.d(TAG, "onSuccess status getSources: ${it.sources}")
                 Log.d(TAG, "-------------------------------------------------")
-            })
+            }
         }
 
         override fun onFailure(throwable: Throwable) {
@@ -126,35 +126,35 @@ newsApiClientWithObserver
     })
 ```
 
-## ___________________________________________________________________________________________
+## ______________________________________________________________
 ## Usage without observer
 
 #### Instantiate the Client class:
 
 ``` java 
-val newsApiClient = NewsApiClient("YOUR_API_KEY")
+val newsApiClient = NewsApi.init(NewsApiClient("YOUR_API_KEY"))
 ```
 
 ``` java 
-val newsApiClient = NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel(), OfflineCacheInterceptorModel())
+val newsApiClient = NewsApi.init(NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel(), OfflineCacheInterceptorModel()))
 ```
 
 ``` java 
-val newsApiClient = NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel())
+val newsApiClient = NewsApi.init(NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel()))
 ```
 
 ``` java 
-val newsApiClient = NewsApiClient("YOUR_API_KEY", OfflineCacheInterceptorModel())
+val newsApiClient = NewsApi.init(NewsApiClient("YOUR_API_KEY", OfflineCacheInterceptorModel()))
 ```
 
 **```NetworkInterceptorModel()``` and ```OfflineCacheInterceptorModel()``` helps cache result for a specific amount of hours, minutes or even days. By default it is 1 hour and to change**
 
 ``` java 
-val newsApiClient = NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel(1,TimeUnit.MINUTES))
+val newsApiClient = NewsApi.init(NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel(1,TimeUnit.MINUTES)))
 ```
 
 ``` java 
-val newsApiClient = NewsApiClient("YOUR_API_KEY", OfflineCacheInterceptorModel(1,TimeUnit.DAYS))
+val newsApiClient = NewsApi.init(NewsApiClient("YOUR_API_KEY", OfflineCacheInterceptorModel(1,TimeUnit.DAYS)))
 ```
 
 #### Get Top EveryThing [doc](https://newsapi.org/docs/endpoints/everything)

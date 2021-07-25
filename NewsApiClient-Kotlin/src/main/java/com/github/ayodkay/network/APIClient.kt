@@ -1,6 +1,6 @@
 package com.github.ayodkay.network
 
-import com.github.ayodkay.app.App.Companion.context
+import com.github.ayodkay.init.NewsApi.context
 import com.github.ayodkay.interceptor.NetworkInterceptor
 import com.github.ayodkay.interceptor.OfflineCacheInterceptor
 import com.github.ayodkay.models.NetworkInterceptorModel
