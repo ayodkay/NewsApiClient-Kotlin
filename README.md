@@ -18,7 +18,7 @@ allprojects {
 #### Step 2 : Download via ```Gradle```:
 
 ```kotlin
-implementation 'com.github.ayodkay:NewsApiClient-Kotlin:1.0.4'
+implementation 'com.github.ayodkay:NewsApiClient-Kotlin:1.0.5'
 ```
 
 
@@ -27,29 +27,33 @@ implementation 'com.github.ayodkay:NewsApiClient-Kotlin:1.0.4'
 #### Instantiate the Client class:
 
 ``` java 
-val newsApiClientWithObserver = NewsApi.init(this, NewsApiClientWithObserver("YOUR_API_KEY"))
+NewsApi.init(this)
 ```
 
 ``` java 
-val newsApiClientWithObserver = NewsApi.init(NewsApiClientWithObserver("YOUR_API_KEY", NetworkInterceptorModel(), OfflineCacheInterceptorModel()))
+val newsApiClientWithObserver = NewsApiClientWithObserver("YOUR_API_KEY")
 ```
 
 ``` java 
-val newsApiClientWithObserver = NewsApi.init(NewsApiClientWithObserver("YOUR_API_KEY", NetworkInterceptorModel()))
+val newsApiClientWithObserver = NewsApiClientWithObserver("YOUR_API_KEY", NetworkInterceptorModel(), OfflineCacheInterceptorModel())
 ```
 
 ``` java 
-val newsApiClientWithObserver = NewsApi.init(NewsApiClientWithObserver("YOUR_API_KEY", OfflineCacheInterceptorModel()))
+val newsApiClientWithObserver = NewsApiClientWithObserver("YOUR_API_KEY", NetworkInterceptorModel())
+```
+
+``` java 
+val newsApiClientWithObserver = NewsApiClientWithObserver("YOUR_API_KEY", OfflineCacheInterceptorModel())
 ```
 
 **```NetworkInterceptorModel()``` and ```OfflineCacheInterceptorModel()``` helps cache result for a specific amount of hours, minutes or even days. By default it is 1 hour and to change**
 
 ``` java 
-val newsApiClientWithObserver = NewsApi.init(NewsApiClientWithObserver("YOUR_API_KEY", NetworkInterceptorModel(1,TimeUnit.MINUTES)))
+val newsApiClientWithObserver = NewsApiClientWithObserver("YOUR_API_KEY", NetworkInterceptorModel(1,TimeUnit.MINUTES))
 ```
 
 ``` java 
-val newsApiClientWithObserver = NewsApi.init(NewsApiClientWithObserver("YOUR_API_KEY", OfflineCacheInterceptorModel(1,TimeUnit.DAYS)))
+val newsApiClientWithObserver = NewsApiClientWithObserver("YOUR_API_KEY", OfflineCacheInterceptorModel(1,TimeUnit.DAYS))
 ```
 
 #### Get Top EveryThing [doc](https://newsapi.org/docs/endpoints/everything)
@@ -126,35 +130,39 @@ newsApiClientWithObserver
     })
 ```
 
-## ______________________________________________________________
+## ___________________________________________________________________________________________
 ## Usage without observer
 
 #### Instantiate the Client class:
 
 ``` java 
-val newsApiClient = NewsApi.init(NewsApiClient("YOUR_API_KEY"))
+NewsApi.init(this)
 ```
 
 ``` java 
-val newsApiClient = NewsApi.init(NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel(), OfflineCacheInterceptorModel()))
+val newsApiClient = NewsApiClient("YOUR_API_KEY")
 ```
 
 ``` java 
-val newsApiClient = NewsApi.init(NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel()))
+val newsApiClient = NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel(), OfflineCacheInterceptorModel())
 ```
 
 ``` java 
-val newsApiClient = NewsApi.init(NewsApiClient("YOUR_API_KEY", OfflineCacheInterceptorModel()))
+val newsApiClient = NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel())
+```
+
+``` java 
+val newsApiClient = NewsApiClient("YOUR_API_KEY", OfflineCacheInterceptorModel())
 ```
 
 **```NetworkInterceptorModel()``` and ```OfflineCacheInterceptorModel()``` helps cache result for a specific amount of hours, minutes or even days. By default it is 1 hour and to change**
 
 ``` java 
-val newsApiClient = NewsApi.init(NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel(1,TimeUnit.MINUTES)))
+val newsApiClient = NewsApiClient("YOUR_API_KEY", NetworkInterceptorModel(1,TimeUnit.MINUTES))
 ```
 
 ``` java 
-val newsApiClient = NewsApi.init(NewsApiClient("YOUR_API_KEY", OfflineCacheInterceptorModel(1,TimeUnit.DAYS)))
+val newsApiClient = NewsApiClient("YOUR_API_KEY", OfflineCacheInterceptorModel(1,TimeUnit.DAYS))
 ```
 
 #### Get Top EveryThing [doc](https://newsapi.org/docs/endpoints/everything)
