@@ -7,6 +7,7 @@ import com.github.ayodkay.builder.EverythingBuilder
 import com.github.ayodkay.builder.SourcesBuilder
 import com.github.ayodkay.builder.TopHeadlinesBuilder
 import com.github.ayodkay.client.NewsApiClient
+import com.github.ayodkay.init.NewsApi
 import com.github.ayodkay.interfaces.ArticlesResponseCallback
 import com.github.ayodkay.interfaces.SourcesCallback
 import com.github.ayodkay.models.ArticleResponse
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        NewsApi.init(this)
         val newsApiClient = NewsApiClient("YOUR_API_KEY")
 
 //        val newsApiClient = NewsApiClient("YOUR_API_KEY",

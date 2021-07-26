@@ -8,7 +8,10 @@ import com.github.ayodkay.builder.EverythingBuilder
 import com.github.ayodkay.builder.SourcesBuilder
 import com.github.ayodkay.builder.TopHeadlinesBuilder
 import com.github.ayodkay.constants.NewsConstant
+import com.github.ayodkay.init.NewsApi
 import com.github.ayodkay.models.ArticleResponse
+import com.github.ayodkay.models.NetworkInterceptorModel
+import com.github.ayodkay.models.OfflineCacheInterceptorModel
 import com.github.ayodkay.models.SourcesResponse
 import com.github.ayodkay.mvvm.client.NewsApiClientWithObserver
 import com.github.ayodkay.mvvm.interfaces.ArticlesLiveDataResponseCallback
@@ -19,8 +22,12 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        val newsApiClientWithObserver =
-            NewsApiClientWithObserver("YOUR_API_KEY", this)
+        NewsApi.init(this)
+        val newsApiClientWithObserver = NewsApiClientWithObserver(
+            "YOUR_API_KEY",
+            NetworkInterceptorModel(), OfflineCacheInterceptorModel()
+        )
+
 
 //        val newsApiClientWithObserver = NewsApiClientWithObserver("YOUR_API_KEY",
 //            NetworkInterceptorModel(), OfflineCacheInterceptorModel())
