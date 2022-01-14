@@ -2,6 +2,9 @@
 
 [![](https://jitpack.io/v/ayodkay/NewsApiClient-Kotlin.svg)](https://jitpack.io/#ayodkay/NewsApiClient-Kotlin)
 
+[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-NewsApiClient--Kotlin-green.svg?style=flat )]( https://android-arsenal.com/details/1/8350 )
+
+
 **Create an account at [newsapi.org](https://newsapi.org/) to get your API key.**
 
 #### Step 1. Add the JitPack repository to your root ```build.gradle``` file.
